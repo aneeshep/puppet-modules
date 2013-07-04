@@ -35,7 +35,7 @@
 #
 # Copyright 2013 Your name here, unless otherwise noted.
 #
-class tomcat {
+class imaginea-tomcat {
 
   archive { 'apache-tomcat-6.0.26':
     ensure => present,
