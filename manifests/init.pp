@@ -45,7 +45,7 @@ class imaginea-tomcat {
   
   exec { "bash /opt/apache-tomcat-6.0.26/bin/startup.sh":
     cwd     => "/opt",
-    path    => ["/usr/bin", "/usr/sbin"],
+    path    => ["/usr/bin", "/bin"],
     require => Archive['apache-tomcat-6.0.26']
   }
 
