@@ -8,4 +8,4 @@ description 'A sample module to download and install tomcat from source'
 project_page 'UNKNOWN'
 
 ## Add dependencies, if any:
- dependency 'smarchive/archive', '>= '0.1.1'
+# dependency 'smarchive/archive', '>= '0.1.1'
