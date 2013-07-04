@@ -1,4 +1,4 @@
-class core_permissions {
+class core-permissions {
 	if $osfamily != 'windows' {
 		$rootgroup = $operatingsystem ? {
 			'Solaris' => 'wheel',
