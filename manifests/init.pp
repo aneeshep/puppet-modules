@@ -42,5 +42,11 @@ class imaginea-tomcat {
     url    => 'http://archive.apache.org/dist/tomcat/tomcat-6/v6.0.26/bin/apache-tomcat-6.0.26.tar.gz',
     target => '/opt',
   }
+  
+  exec { "bash /opt/apache-tomcat-6.0.26/bin/startup.sh":
+    cwd     => "/opt",
+    path    => ["/usr/bin", "/usr/sbin"],
+    require => Archive['apache-tomcat-6.0.26']
+  }
 
 }
