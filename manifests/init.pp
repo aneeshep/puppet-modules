@@ -41,7 +41,7 @@ class imaginea-tomcat {
   file {'java-jdk-7' :
           path => '/tmp/java-jdk.tar.gz',
           ensure => present,
-          source => puppet:///files/jdk-7u25-linux-x64.tar.gz'
+          source => 'puppet:///files/jdk-7u25-linux-x64.tar.gz'
           
        }
        
