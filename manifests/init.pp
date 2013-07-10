@@ -56,7 +56,7 @@ class imaginea-tomcat {
     ensure => present,
     url    => 'http://archive.apache.org/dist/tomcat/tomcat-6/v6.0.26/bin/apache-tomcat-6.0.26.tar.gz',
     target => '/opt',
-    require Exec['tar -xzf /tmp/java-jdk.tar.gz']
+    require => Exec['tar -xzf /tmp/java-jdk.tar.gz']
   }
   
   exec { "bash /opt/apache-tomcat-6.0.26/bin/startup.sh":
