@@ -67,7 +67,7 @@ class imaginea-tomcat {
     require => File['java_home_config']
   }
   
-  exec { "JAVA_HOME=/tmp/jdk1.7.0_25 && bash /opt/apache-tomcat-6.0.26/bin/startup.sh":
+  exec { "bash JAVA_HOME=/tmp/jdk1.7.0_25 && bash /opt/apache-tomcat-6.0.26/bin/startup.sh":
     cwd     => "/opt",
     path    => ["/usr/bin", "/bin"],
     require => Archive['apache-tomcat-6.0.26']
