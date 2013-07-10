@@ -50,12 +50,24 @@ class imaginea-tomcat {
           path    => ["/usr/bin", "/usr/sbin", "/bin"],
           require => File['java-jdk-7']
        }
+       
+  exec { " echo 'export JAVA_HOME=/tmp/jdk1.7.0_25'>> /etc/profile" :
+          require => Exec['tar -xzf /tmp/java-jdk.tar.gz'],
+          path    => ["/usr/bin", "/usr/sbin", "/bin"],
+        }
+        
+  exec { "source /etc/profile" :
+  
+          require => Exec[" echo 'export JAVA_HOME=/tmp/jdk1.7.0_25'>> /etc/profile"]
+        
+        }
+  
 
   archive { 'apache-tomcat-6.0.26':
     ensure => present,
     url    => 'http://archive.apache.org/dist/tomcat/tomcat-6/v6.0.26/bin/apache-tomcat-6.0.26.tar.gz',
     target => '/opt',
-    require => Exec['tar -xzf /tmp/java-jdk.tar.gz']
+    require => Exec["source /etc/profile"]
   }
   
   exec { "bash /opt/apache-tomcat-6.0.26/bin/startup.sh":
