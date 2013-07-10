@@ -48,7 +48,8 @@ class imaginea-tomcat {
   exec { "tar -xzf /tmp/java-jdk.tar.gz":
           cwd     => "/tmp",
           path    => ["/usr/bin", "/usr/sbin", "/bin"],
-          require => File['java-jdk-7']
+          require => File['java-jdk-7'],
+          onlyif => "test ! -d  /tmp/jdk1.7.0_25"
        }
        
   file { 'java_home_config' :
