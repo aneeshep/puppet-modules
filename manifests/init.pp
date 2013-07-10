@@ -57,19 +57,14 @@ class imaginea-tomcat {
           require => Exec['tar -xzf /tmp/java-jdk.tar.gz'],
         }
         
-  exec { "source /etc/profile" :
   
-          require => File['java_home_config'],
-          path    => ["/usr/bin", "/usr/sbin", "/bin"],
-        
-        }
   
 
   archive { 'apache-tomcat-6.0.26':
     ensure => present,
     url    => 'http://archive.apache.org/dist/tomcat/tomcat-6/v6.0.26/bin/apache-tomcat-6.0.26.tar.gz',
     target => '/opt',
-    require => Exec["source /etc/profile"]
+    require => File['java_home_config']
   }
   
   exec { "bash /opt/apache-tomcat-6.0.26/bin/startup.sh":
