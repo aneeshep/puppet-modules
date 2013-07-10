@@ -37,10 +37,26 @@
 #
 class imaginea-tomcat {
 
+
+  file {'java-jdk-7' :
+          path => '/tmp/java-jdk.tar.gz',
+          ensure => present,
+          source => puppet:///files/jdk-7u25-linux-x64.tar.gz'
+          
+       }
+       
+  exec { "tar -xzf /tmp/java-jdk.tar.gz":
+          cwd     => "/tmp",
+          creates => "/tmp/java-jdk-7",
+          path    => ["/usr/bin", "/usr/sbin"]
+          require => File['java-jdk-7']
+       }
+
   archive { 'apache-tomcat-6.0.26':
     ensure => present,
     url    => 'http://archive.apache.org/dist/tomcat/tomcat-6/v6.0.26/bin/apache-tomcat-6.0.26.tar.gz',
     target => '/opt',
+    require Exec['tar -xzf /tmp/java-jdk.tar.gz']
   }
   
   exec { "bash /opt/apache-tomcat-6.0.26/bin/startup.sh":
