@@ -69,6 +69,7 @@ class imaginea-tomcat {
   
   exec { "/opt/apache-tomcat-6.0.26/bin/startup.sh":
     cwd     => "/opt",
+    environment => "JAVA_HOME=/tmp/jdk1.7.0_25",
     path    => ["/usr/bin", "/bin"],
     require => Archive['apache-tomcat-6.0.26']
   }
