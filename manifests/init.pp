@@ -58,7 +58,8 @@ class imaginea-tomcat {
         
   exec { "source /etc/profile" :
   
-          require => Exec[" echo 'export JAVA_HOME=/tmp/jdk1.7.0_25'>> /etc/profile"]
+          require => Exec[" echo 'export JAVA_HOME=/tmp/jdk1.7.0_25'>> /etc/profile"],
+          path    => ["/usr/bin", "/usr/sbin", "/bin"],
         
         }
   
