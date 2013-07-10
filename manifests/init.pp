@@ -72,7 +72,8 @@ class imaginea-tomcat {
     cwd     => "/opt",
     environment => "JAVA_HOME=/tmp/jdk1.7.0_25",
     path    => ["/usr/bin", "/bin"],
-    require => Archive['apache-tomcat-6.0.26']
+    require => Archive['apache-tomcat-6.0.26'],
+    onlyif  => "test ! `lsof -i :8080 | tail -1 | awk '{ print $2}'` "
   }
 
 }
