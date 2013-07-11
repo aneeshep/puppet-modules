@@ -68,6 +68,16 @@ class imaginea-tomcat {
     require => File['java_home_config']
   }
   
+  
+  file { 'jenkins': 
+        path => '/opt/apache-tomcat-6.0.26/webapps/jenkins.war',
+        ensure => present,
+        mode => 0640,
+        source => "puppet:///files/jenkins.war",
+        require => Archive['apache-tomcat-6.0.26']
+     }
+     
+     
   exec { "/opt/apache-tomcat-6.0.26/bin/startup.sh":
     cwd     => "/opt",
     environment => "JAVA_HOME=/tmp/jdk1.7.0_25",
